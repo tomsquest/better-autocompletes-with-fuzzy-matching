@@ -1,0 +1,34 @@
+!!!
+%head
+  %meta(charset="utf-8")
+  %title A better Autocomplete with Levenshtein distance
+
+  %script(type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.js")
+  %script(type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jqueryui/1.8.12/jquery-ui.min.js")
+  %link(rel="stylesheet" href="stylesheets/jquery-ui.ui-darkness-1.8.css")
+
+%body
+
+  %h1 A better Autocomplete using Levenshtein distance
+
+  %h2 Country auto-complete
+
+  .ui-widget
+    %label(for="country") Country:
+    %input#country
+
+
+  %h2 Results:
+
+  #results
+
+  :javascript
+    $(function() {
+      $("#country").autocomplete({
+        source: "countries",
+        select: function( event, ui ) {
+          $("#results").append("input was: '"+ this.value + "' and selection was: "+ ui.item.value +"<br/>");
+        }
+      });
+    });
+      
